@@ -5,6 +5,11 @@
 //Useful Constants
 const double wheelCircumfrence = 2.75 * M_PI;
 
+const double FLWeight = 1;
+const double FRWeight = -1;
+const double BLWeight = 1;
+const double BRWeight = 1;
+
 //For debugging things
 void printOnScreen(){
 	//lcd::print(1, "Velocity FL: %f", FrontLeft.get_actual_velocity());
@@ -17,10 +22,10 @@ void printOnScreen(){
 void driverControl(double l, double r){
   //Calculates speed of wheels for driver control
 
-	FrontLeft.move_velocity(l);
-	FrontRight.move_velocity(r);
-	BackLeft.move_velocity(l);
-	BackRight.move_velocity(r);
+	FrontLeft.move_velocity(l * FLWeight);
+	FrontRight.move_velocity(r * FRWeight);
+	BackLeft.move_velocity(l * BLWeight);
+	BackRight.move_velocity(r * BRWeight);
 }
 
 
