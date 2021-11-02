@@ -36,7 +36,7 @@ void opcontrol() {
   while (true) {
 		double power = master.get_analog(ANALOG_LEFT_Y);
 		double turn = master.get_analog(ANALOG_LEFT_X);
-		driverControl(100*power+turn, 100*power-turn);
+		driverControl(100*(power-turn), 100*(power+turn));
     pros::delay(2);
   }
 }
