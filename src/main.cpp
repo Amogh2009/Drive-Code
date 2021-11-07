@@ -17,7 +17,6 @@ void initialize() {
 	pros::lcd::register_btn1_cb(centerBtn);
 	pros::lcd::register_btn2_cb(rightBtn);
 
-	opcontrol();
 
 	//autonSelector();
 }
@@ -38,5 +37,6 @@ void opcontrol() {
 		double turn = master.get_analog(ANALOG_LEFT_X);
 		driverControl(100*(power-turn), 100*(power+turn));
     pros::delay(2);
+
   }
 }
