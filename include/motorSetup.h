@@ -37,6 +37,7 @@ Motor LeftIntake(LIPort, false);
 Motor RightIntake(RIPort, true);
 Motor BackRoller(LRPort, true);
 Motor MainRoller(RRPort, true);
+Motor Clamp(7,true);
 Imu inertial(IMUPort);
 
 ADIEncoder yWheel('C', 'D', true);
