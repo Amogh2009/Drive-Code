@@ -1,7 +1,7 @@
 {
     "py/object": "pros.conductor.project.Project",
     "py/state": {
-        "project_name": "Template-PROS",
+        "project_name": "95070F Drive Code",
         "target": "v5",
         "templates": {
             "kernel": {
