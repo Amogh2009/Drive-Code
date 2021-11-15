@@ -3,7 +3,7 @@
 
 
 //Useful Constants
-const double wheelCircumfrence = 2.75 * M_PI;
+const double wheelCircumfrence = 4 * M_PI;
 
 const double FLWeight = 1;
 const double FRWeight = -1;
