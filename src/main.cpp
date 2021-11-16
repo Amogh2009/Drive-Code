@@ -17,7 +17,7 @@ void initialize() {
 	pros::lcd::register_btn1_cb(centerBtn);
 	pros::lcd::register_btn2_cb(rightBtn);
 
-
+	autonomous();
 	//autonSelector();
 }
 
@@ -27,6 +27,11 @@ void competition_initialize() {}
 
 void autonomous() {
 	skills();
+	FrontLeft.move_relative((1) * FLWeight, 100);
+	FrontRight.move_relative((1) * FRWeight, 100);
+	BackLeft.move_relative((1) * BLWeight, 100);
+	BackRight.move_relative((1) * BRWeight, 100);
+	pros::delay(2000);
 }
 using namespace pros;
 void opcontrol() {
