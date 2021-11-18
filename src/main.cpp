@@ -26,7 +26,7 @@ void disabled() {}
 void competition_initialize() {}
 
 void autonomous() {
-	skills();
+	
 }
 using namespace pros;
 void opcontrol() {
@@ -45,10 +45,6 @@ void opcontrol() {
 		}else{
 			Clamp.move(0);
 		}
-		if (master.get_digital(DIGITAL_L1)){
-			Conveyor.move(100);
-		}else{
-			Conveyor.move(0);
+
 		}
   }
-}
