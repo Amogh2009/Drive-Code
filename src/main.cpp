@@ -1,5 +1,7 @@
 #include "main.h"
 #include  "autonomous.h"
+#include "motorSetup.h"
+#include <math.h>
 
 void leftBtn(){
 
@@ -25,18 +27,48 @@ void disabled() {}
 
 void competition_initialize() {}
 
+const int MOVE_SPEED = 60;  // 60 RPM
+const float WHEEL_RADIUS = 2.0;  // 2 inches
+float calculateRotations(float distance) {
+	return 6 * distance / (WHEEL_RADIUS * M_PI);
+}
+
+// Move the robot forward distance in feet
+void moveForward(float distance) {
+	float rotations = calculateRotations(distance);
+	FrontLeft.move_relative(rotations, MOVE_SPEED);
+	FrontRight.move_relative(rotations, MOVE_SPEED);
+	BackLeft.move_relative(rotations, MOVE_SPEED);
+	BackRight.move_relative(rotations, MOVE_SPEED);
+}
+
+// Move the robot backward distance in feet
+void moveBackward(float distance) {
+	float rotations = calculateRotations(distance);
+	FrontLeft.move_relative(-rotations, MOVE_SPEED);
+	FrontRight.move_relative(-rotations, MOVE_SPEED);
+	BackLeft.move_relative(-rotations, MOVE_SPEED);
+	BackRight.move_relative(-rotations, MOVE_SPEED);
+}
+
+
 void autonomous() {
-<<<<<<< HEAD
 	skills();
+	/*
 	FrontLeft.move_relative((1) * FLWeight, 100);
 	FrontRight.move_relative((1) * FRWeight, 100);
 	BackLeft.move_relative((1) * BLWeight, 100);
 	BackRight.move_relative((1) * BRWeight, 100);
 	pros::delay(2000);
-=======
-	
->>>>>>> ac0766ed99adebb0f417a44b4f9fe16a33fe1700
+	*/
+	moveForward(6.0);
+	// do we need to add delay
+	// pros::delay(10000);
+	// clamp down
+	BackClamp.move(100);
+	moveBackward(5.5);
 }
+
 using namespace pros;
 void opcontrol() {
   Controller master (CONTROLLER_MASTER);
@@ -52,18 +84,17 @@ void opcontrol() {
 		}
 		else if (master.get_digital(DIGITAL_R1)){
 			BackClamp.move(-100);
-		}else{
+		} else {
 			BackClamp.move(0);
 		}
 		//front clamp
 		if (master.get_digital(DIGITAL_L2)){
-			BackClamp.move(100);
+			FrontClamp.move(100);
 		}
-<<<<<<< HEAD
 		else if (master.get_digital(DIGITAL_L1)){
-			BackClamp.move(-100);
-		}else{
-			BackClamp.move(0);
+			FrontClamp.move(-100);
+		} else {
+			FrontClamp.move(0);
 		}
 		//ring intake? commenting out for now
 		/*
@@ -71,11 +102,9 @@ void opcontrol() {
 			Conveyor.move(100);
 		}else{
 			Conveyor.move(0);
-=======
-
->>>>>>> ac0766ed99adebb0f417a44b4f9fe16a33fe1700
 		}
 		*/
 
 		pros::delay(2);
   }
+}
