@@ -40,9 +40,13 @@ Motor LeftIntake(LIPort, false);
 Motor RightIntake(RIPort, true);
 Motor BackRoller(LRPort, true);
 Motor MainRoller(RRPort, true);
+<<<<<<< HEAD
 Motor BackClamp(BCPort,true);
 Motor FrontClamp(FCPort,true);
 Motor Conveyor(LIPort,true);
+=======
+Motor Clamp(7,true);
+>>>>>>> ac0766ed99adebb0f417a44b4f9fe16a33fe1700
 Imu inertial(IMUPort);
 
 ADIEncoder yWheel('C', 'D', true);

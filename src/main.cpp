@@ -26,12 +26,16 @@ void disabled() {}
 void competition_initialize() {}
 
 void autonomous() {
+<<<<<<< HEAD
 	skills();
 	FrontLeft.move_relative((1) * FLWeight, 100);
 	FrontRight.move_relative((1) * FRWeight, 100);
 	BackLeft.move_relative((1) * BLWeight, 100);
 	BackRight.move_relative((1) * BRWeight, 100);
 	pros::delay(2000);
+=======
+	
+>>>>>>> ac0766ed99adebb0f417a44b4f9fe16a33fe1700
 }
 using namespace pros;
 void opcontrol() {
@@ -55,6 +59,7 @@ void opcontrol() {
 		if (master.get_digital(DIGITAL_L2)){
 			BackClamp.move(100);
 		}
+<<<<<<< HEAD
 		else if (master.get_digital(DIGITAL_L1)){
 			BackClamp.move(-100);
 		}else{
@@ -66,9 +71,11 @@ void opcontrol() {
 			Conveyor.move(100);
 		}else{
 			Conveyor.move(0);
+=======
+
+>>>>>>> ac0766ed99adebb0f417a44b4f9fe16a33fe1700
 		}
 		*/
 
 		pros::delay(2);
   }
-}
