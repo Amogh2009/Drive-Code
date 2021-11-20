@@ -1,5 +1,7 @@
 #include "main.h"
-#include "motorSetup.h"
+//#include "motorSetup.h"
+
+//okapi::Controller master;
 
 
 //Useful Constants
@@ -18,6 +20,36 @@ void printOnScreen(){
   lcd::print(1, "Y Wheel Reading: %f", ((double) yWheel.get_value()));
   lcd::print(2, "X Wheel Reading: %f", ((double) xWheel.get_value()));
 }
+
+int selected = 0;
+std::string autons[2] = {"Disabled", "Enabled"};
+int size = 2;//*(&autons + 1) - autons;
+
+
+void autonSelector(){
+  control.clear();
+  pros::delay(200);
+  while(true){
+    control.clear();
+    pros::delay(100);
+    control.print(2, 1, autons[selected].c_str());
+    pros::delay(100);
+     if(control.get_digital(DIGITAL_RIGHT)){
+       selected = (selected + 1 + size) % size;
+     }else if(control.get_digital(DIGITAL_LEFT)){
+       selected = (selected - 1 + size) % size;
+     }else if(control.get_digital(DIGITAL_A)){
+       pros::delay(200);
+       if(control.get_digital(DIGITAL_A)){
+         goto slctEnd;
+       }
+     }
+   }
+   slctEnd:
+   control.rumble("..");
+}
+
+
 
 void driverControl(double l, double r){
   //Calculates speed of wheels for driver control

@@ -1,6 +1,8 @@
+
 #include "main.h"
 #include  "autonomous.h"
 #include "motorSetup.h"
+#include "functions.h"
 #include <math.h>
 
 void leftBtn(){
@@ -12,6 +14,7 @@ void centerBtn(){
 void rightBtn(){
 
 }
+
 void initialize() {
 	pros::lcd::initialize();
 
@@ -19,8 +22,7 @@ void initialize() {
 	pros::lcd::register_btn1_cb(centerBtn);
 	pros::lcd::register_btn2_cb(rightBtn);
 
-	autonomous();
-	//autonSelector();
+	autonSelector();
 }
 
 void disabled() {}
@@ -53,20 +55,21 @@ void moveBackward(float distance) {
 
 
 void autonomous() {
-	skills();
-	/*
-	FrontLeft.move_relative((1) * FLWeight, 100);
-	FrontRight.move_relative((1) * FRWeight, 100);
-	BackLeft.move_relative((1) * BLWeight, 100);
-	BackRight.move_relative((1) * BRWeight, 100);
-	pros::delay(2000);
-	*/
-	moveForward(6.0);
-	// do we need to add delay
-	// pros::delay(10000);
-	// clamp down
-	BackClamp.move(100);
-	moveBackward(5.5);
+	if(selected) {
+		/*
+		FrontLeft.move_relative((1) * FLWeight, 100);
+		FrontRight.move_relative((1) * FRWeight, 100);
+		BackLeft.move_relative((1) * BLWeight, 100);
+		BackRight.move_relative((1) * BRWeight, 100);
+		pros::delay(2000);
+		*/
+		moveForward(6.0);
+		// do we need to add delay
+		// pros::delay(10000);
+		// clamp down
+		BackClamp.move(100);
+		moveBackward(5.5);
+	}
 }
 
 using namespace pros;
