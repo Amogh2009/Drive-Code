@@ -38,9 +38,10 @@ void autonSelector(){
        selected = (selected + 1 + size) % size;
      }else if(control.get_digital(DIGITAL_LEFT)){
        selected = (selected - 1 + size) % size;
-     }else if(control.get_digital(DIGITAL_A)){
+     }else if(control.get_digital(DIGITAL_Y)){
        pros::delay(200);
-       if(control.get_digital(DIGITAL_A)){
+       if(control.get_digital(DIGITAL_Y)){
+         control.print(2, 1, "Selected %d", selected);
          goto slctEnd;
        }
      }
