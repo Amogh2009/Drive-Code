@@ -38,31 +38,29 @@ float calculateRotations(float distance) {
 // Move the robot forward distance in feet
 void moveForward(float distance) {
 	float rotations = calculateRotations(distance);
-	FrontLeft.move_relative(rotations, MOVE_SPEED);
-	FrontRight.move_relative(rotations, MOVE_SPEED);
-	BackLeft.move_relative(rotations, MOVE_SPEED);
-	BackRight.move_relative(rotations, MOVE_SPEED);
+	FrontLeft.move_relative(rotations, 60);
+	FrontRight.move_relative(rotations, 60);
+	BackLeft.move_relative(rotations, 60);
+	BackRight.move_relative(rotations, 60);
 }
 
 // Move the robot backward distance in feet
 void moveBackward(float distance) {
 	float rotations = calculateRotations(distance);
-	FrontLeft.move_relative(-rotations, MOVE_SPEED);
-	FrontRight.move_relative(-rotations, MOVE_SPEED);
-	BackLeft.move_relative(-rotations, MOVE_SPEED);
-	BackRight.move_relative(-rotations, MOVE_SPEED);
+	FrontLeft.move_relative(-rotations, 60);
+	FrontRight.move_relative(-rotations, 60);
+	BackLeft.move_relative(-rotations, 60);
+	BackRight.move_relative(-rotations, 60);
 }
 
 
 void autonomous() {
 	if(selected) {
-		/*
 		FrontLeft.move_relative((1) * FLWeight, 100);
 		FrontRight.move_relative((1) * FRWeight, 100);
 		BackLeft.move_relative((1) * BLWeight, 100);
 		BackRight.move_relative((1) * BRWeight, 100);
 		pros::delay(2000);
-		*/
 		moveForward(6.0);
 		// do we need to add delay
 		// pros::delay(10000);
