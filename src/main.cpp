@@ -38,19 +38,19 @@ float calculateRotations(float distance) {
 // Move the robot forward distance in feet
 void moveForward(float distance) {
 	float rotations = calculateRotations(distance);
-	FrontLeft.move_relative(rotations, 720);
-	FrontRight.move_relative(rotations, 720);
-	BackLeft.move_relative(rotations, 720);
-	BackRight.move_relative(rotations, 720);
+	FrontLeft.move_absolute(rotations, 720);
+	FrontRight.move_absolute(rotations, 720);
+	BackLeft.move_absolute(rotations, 720);
+	BackRight.move_absolute(rotations, 720);
 }
 
 // Move the robot backward distance in feet
 void moveBackward(float distance) {
 	float rotations = calculateRotations(distance);
-	FrontLeft.move_relative(-rotations, 720);
-	FrontRight.move_relative(-rotations, 720);
-	BackLeft.move_relative(-rotations, 720);
-	BackRight.move_relative(-rotations, 720);
+	FrontLeft.move_absolute(-rotations, 720);
+	FrontRight.move_absolute(-rotations, 720);
+	BackLeft.move_absolute(-rotations, 720);
+	BackRight.move_absolute(-rotations, 720);
 }
 
 
