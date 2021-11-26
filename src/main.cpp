@@ -65,7 +65,7 @@ void autonomous() {
 		// do we need to add delay
 		pros::delay(10000);
 		// clamp down
-		BackClamp.move_relative(200, 100);
+		BackClamp.move(100);
 		moveBackward(5.5);
 	}
 }
