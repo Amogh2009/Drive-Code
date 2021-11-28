@@ -8,7 +8,7 @@
 const double wheelCircumfrence = 4 * M_PI;
 
 const double FLWeight = 1;
-const double FRWeight = -1;
+const double FRWeight = 1;
 const double BLWeight = 1;
 const double BRWeight = 1;
 

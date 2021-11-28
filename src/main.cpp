@@ -32,25 +32,27 @@ void competition_initialize() {}
 const int MOVE_SPEED = 60;  // 60 RPM
 const float WHEEL_RADIUS = 2.0;  // 2 inches
 float calculateRotations(float distance) {
-	return 6 * distance / (WHEEL_RADIUS * M_PI);
+	return distance / (2 * WHEEL_RADIUS * M_PI);
 }
 
 // Move the robot forward distance in feet
 void moveForward(float distance) {
 	float rotations = calculateRotations(distance);
-	FrontLeft.move_absolute(720, MOVE_SPEED);
-	FrontRight.move_absolute(720, MOVE_SPEED);
-	BackLeft.move_absolute(720, MOVE_SPEED);
-	BackRight.move_absolute(720, MOVE_SPEED);
+	float degrees = 360 * rotations;
+	FrontLeft.move_relative(720, MOVE_SPEED);
+	FrontRight.move_relative(720, MOVE_SPEED);
+	BackLeft.move_relative(720, MOVE_SPEED);
+	BackRight.move_relative(720, MOVE_SPEED);
 }
 
 // Move the robot backward distance in feet
 void moveBackward(float distance) {
 	float rotations = calculateRotations(distance);
-	FrontLeft.move_absolute(-720, MOVE_SPEED);
-	FrontRight.move_absolute(-720, MOVE_SPEED);
-	BackLeft.move_absolute(-720, MOVE_SPEED);
-	BackRight.move_absolute(-720, MOVE_SPEED);
+	float degrees = 360 * rotations;
+	FrontLeft.move_relative(-720, MOVE_SPEED);
+	FrontRight.move_relative(-720, MOVE_SPEED);
+	BackLeft.move_relative(-720, MOVE_SPEED);
+	BackRight.move_relative(-720, MOVE_SPEED);
 }
 
 
@@ -63,9 +65,10 @@ void autonomous() {
 		//pros::delay(2000);
 		moveForward(6.0);
 		// do we need to add delay
-		pros::delay(10000);
+		pros::delay(5000);
 		// clamp down
 		BackClamp.move(100);
+		pros::delay(1000);
 		moveBackward(5.5);
 	}
 }

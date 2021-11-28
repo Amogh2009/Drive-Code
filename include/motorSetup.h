@@ -17,23 +17,23 @@ extern Motor LeftIntake;
 extern Motor RightIntake;
 
 //Ports
-const int FLPort = 6;
-const int FRPort = 3;
-const int BLPort = 5;
-const int BRPort = 4;
+const int FLPort = 3;
+const int FRPort = 6;
+const int BLPort = 4;
+const int BRPort = 5;
 
 const int BCPort = 7;
-const int FCPort = 9;
+const int FCPort = 8;
 
-const int LIPort = 8;
-const int RIPort = 5;
+const int LIPort = 10;
+const int RIPort = 11;
 const int LRPort = 2;
 const int RRPort = 3;
 const int IMUPort = 1;
 
 Controller control (E_CONTROLLER_MASTER);
 Motor FrontLeft(FLPort, true);
-Motor FrontRight(FRPort, true);
+Motor FrontRight(FRPort, false);
 Motor BackLeft(BLPort, true);
 Motor BackRight(BRPort, false);
 Motor LeftIntake(LIPort, false);
