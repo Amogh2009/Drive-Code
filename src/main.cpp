@@ -59,16 +59,19 @@ void moveBackward(float distance) {
 
 void autonomous() {
 	if(selected) {
-		//FrontLeft.move_relative((1) * FLWeight, 100);
-		//FrontRight.move_relative((1) * FRWeight, 100);
-		//BackLeft.move_relative((1) * BLWeight, 100);
-		//BackRight.move_relative((1) * BRWeight, 100);
-		//pros::delay(2000);
+		/*
+		FrontLeft.move_relative((1) * FLWeight, 100);
+		FrontRight.move_relative((1) * FRWeight, 100);
+		BackLeft.move_relative((1) * BLWeight, 100);
+		BackRight.move_relative((1) * BRWeight, 100);
+		pros::delay(2000);
+		*/
 		moveForward(6.0);
-		// do we need to add delay
+		//delay of 5 seconds
 		pros::delay(5000);
 		// clamp down
 		BackClamp.move(100);
+		//delay of 1 second
 		pros::delay(1000);
 		moveBackward(5.5);
 	}
@@ -109,7 +112,7 @@ void opcontrol() {
 		} else {
 			Lift.move(0);
 		}
-		//ring intake? commenting out for now
+		//ring intake
 		/*
 		if (master.get_digital(DIGITAL_L1)){
 			Conveyor.move(100);
