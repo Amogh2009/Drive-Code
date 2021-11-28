@@ -32,7 +32,8 @@ void competition_initialize() {}
 const int MOVE_SPEED = 60;  // 60 RPM
 const float WHEEL_RADIUS = 2.0;  // 2 inches
 float calculateRotations(float distance) {
-	return distance / (2 * WHEEL_RADIUS * M_PI);
+	//converts distance from feet to inches
+	return 12 * distance / (2 * WHEEL_RADIUS * M_PI);
 }
 
 // Move the robot forward distance in feet
