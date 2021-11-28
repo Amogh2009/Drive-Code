@@ -43,6 +43,7 @@ Motor MainRoller(RRPort, true);
 Motor BackClamp(BCPort,true);
 Motor FrontClamp(FCPort,true);
 Motor Conveyor(LIPort,true);
+Motor Lift(9, true);
 Imu inertial(IMUPort);
 
 ADIEncoder yWheel('C', 'D', true);

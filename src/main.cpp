@@ -101,6 +101,14 @@ void opcontrol() {
 		} else {
 			FrontClamp.move(0);
 		}
+		if (master.get_digital(DIGITAL_DOWN)){
+			Lift.move(100);
+		}
+		else if (master.get_digital(DIGITAL_UP)){
+			Lift.move(-100);
+		} else {
+			Lift.move(0);
+		}
 		//ring intake? commenting out for now
 		/*
 		if (master.get_digital(DIGITAL_L1)){
