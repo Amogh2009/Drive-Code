@@ -40,20 +40,20 @@ float calculateRotations(float distance) {
 void moveForward(float distance) {
 	float rotations = calculateRotations(distance);
 	float degrees = 360 * rotations;
-	FrontLeft.move_relative(720, MOVE_SPEED);
-	FrontRight.move_relative(720, MOVE_SPEED);
-	BackLeft.move_relative(720, MOVE_SPEED);
-	BackRight.move_relative(720, MOVE_SPEED);
+	FrontLeft.move_relative(degrees, MOVE_SPEED);
+	FrontRight.move_relative(degrees, MOVE_SPEED);
+	BackLeft.move_relative(degrees, MOVE_SPEED);
+	BackRight.move_relative(degrees, MOVE_SPEED);
 }
 
 // Move the robot backward distance in feet
 void moveBackward(float distance) {
 	float rotations = calculateRotations(distance);
 	float degrees = 360 * rotations;
-	FrontLeft.move_relative(-720, MOVE_SPEED);
-	FrontRight.move_relative(-720, MOVE_SPEED);
-	BackLeft.move_relative(-720, MOVE_SPEED);
-	BackRight.move_relative(-720, MOVE_SPEED);
+	FrontLeft.move_relative(-degrees, MOVE_SPEED);
+	FrontRight.move_relative(-degrees, MOVE_SPEED);
+	BackLeft.move_relative(-degrees, MOVE_SPEED);
+	BackRight.move_relative(-degrees, MOVE_SPEED);
 }
 
 
@@ -66,14 +66,14 @@ void autonomous() {
 		BackRight.move_relative((1) * BRWeight, 100);
 		pros::delay(2000);
 		*/
-		moveForward(6.0);
+		moveBackward(6.0);
 		//delay of 5 seconds
 		pros::delay(5000);
 		// clamp down
 		BackClamp.move(100);
 		//delay of 1 second
 		pros::delay(1000);
-		moveBackward(5.5);
+		moveForward(5.5);
 	}
 }
 
@@ -105,12 +105,15 @@ void opcontrol() {
 			FrontClamp.move(0);
 		}
 		if (master.get_digital(DIGITAL_DOWN)){
-			Lift.move(100);
+			Lift1.move(100);
+			Lift2.move(100);
 		}
 		else if (master.get_digital(DIGITAL_UP)){
-			Lift.move(-100);
+			Lift1.move(-100);
+			Lift2.move(-100);
 		} else {
-			Lift.move(0);
+			Lift1.move(0);
+			Lift2.move(0);
 		}
 		//ring intake
 		/*

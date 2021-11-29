@@ -24,10 +24,11 @@ const int BRPort = 5;
 
 const int BCPort = 7;
 const int FCPort = 8;
-const int LPort = 9;
+const int L1Port = 9;
+const int L2Port = 10;
 
-const int LIPort = 10;
-const int RIPort = 11;
+const int LIPort = 11;
+const int RIPort = 12;
 const int LRPort = 2;
 const int RRPort = 3;
 const int IMUPort = 1;
@@ -44,7 +45,8 @@ Motor MainRoller(RRPort, true);
 Motor BackClamp(BCPort,true);
 Motor FrontClamp(FCPort,true);
 Motor Conveyor(LIPort,true);
-Motor Lift(LPort, true);
+Motor Lift1(L1Port, true);
+Motor Lift2(L2Port, false);
 Imu inertial(IMUPort);
 
 ADIEncoder yWheel('C', 'D', true);
