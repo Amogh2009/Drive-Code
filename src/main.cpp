@@ -29,7 +29,7 @@ void disabled() {}
 
 void competition_initialize() {}
 
-const int MOVE_SPEED = 60;  // 60 RPM
+const int MOVE_SPEED = 120;  // 120 RPM
 const float WHEEL_RADIUS = 2.0;  // 2 inches
 float calculateRotations(float distance) {
 	//converts distance from feet to inches
@@ -66,14 +66,14 @@ void autonomous() {
 		BackRight.move_relative((1) * BRWeight, 100);
 		pros::delay(2000);
 		*/
-		moveBackward(6.0);
+		moveBackward(8.0);
 		//delay of 5 seconds
 		pros::delay(5000);
 		// clamp down
 		BackClamp.move(100);
 		//delay of 1 second
 		pros::delay(1000);
-		moveForward(5.5);
+		moveForward(7.5);
 	}
 }
 
