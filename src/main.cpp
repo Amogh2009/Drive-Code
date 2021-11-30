@@ -68,7 +68,7 @@ void autonomous() {
 		*/
 		moveBackward(9.5);
 		//delay of 5 seconds
-		pros::delay(5000);
+		pros::delay(1500);
 		// clamp down
 		BackClamp.move(100);
 		//delay of 1 second
