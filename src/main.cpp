@@ -15,6 +15,13 @@ void rightBtn(){
 
 }
 
+void turnLeft45Degrees(){
+    FrontLeft.move(100);
+    FrontRight.move(200);
+    BackLeft.move(100);
+    BackRight.move(200);
+}
+
 void initialize() {
 	pros::lcd::initialize();
 
