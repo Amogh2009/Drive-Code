@@ -112,12 +112,12 @@ void opcontrol() {
 			FrontClamp.move(0);
 		}
 		if (master.get_digital(DIGITAL_DOWN)){
-			Lift1.move(100);
-			Lift2.move(100);
+			Lift1.move(200);
+			Lift2.move(200);
 		}
 		else if (master.get_digital(DIGITAL_UP)){
-			Lift1.move(-100);
-			Lift2.move(-100);
+			Lift1.move(-200);
+			Lift2.move(-200);
 		} else {
 			Lift1.move(0);
 			Lift2.move(0);
