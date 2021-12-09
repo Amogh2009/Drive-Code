@@ -38,6 +38,7 @@ void competition_initialize() {}
 
 const int MOVE_SPEED = 120;  // 120 RPM
 const float WHEEL_RADIUS = 2.0;  // 2 inches
+
 float calculateRotations(float distance) {
 	//converts distance from feet to inches
 	return 12 * distance / (2 * WHEEL_RADIUS * M_PI);
@@ -53,16 +54,32 @@ void moveForward(float distance) {
 	BackRight.move_relative(degrees, MOVE_SPEED);
 }
 
-// Move the robot backward distance in feet
-void moveBackward(float distance) {
-	float rotations = calculateRotations(distance);
+//still rough, needs adjustment. Not sure if the theory behind it is entirely correct either.
+void turn(float deg, float acc) {
+	//the dist from one opposite wheel to another. Needs measurement.
+	const float inscribedDiameter = 1;
+
+	float circumference = M_PI * inscribedDiameter;
+	float arc_length = circumference * deg / 360;
+	float rotations = calculateRotations(arc_length);
 	float degrees = 360 * rotations;
-	FrontLeft.move_relative(-degrees, MOVE_SPEED);
-	FrontRight.move_relative(-degrees, MOVE_SPEED);
-	BackLeft.move_relative(-degrees, MOVE_SPEED);
-	BackRight.move_relative(-degrees, MOVE_SPEED);
+	FrontLeft.move_relative(acc + degrees, MOVE_SPEED);
+	FrontRight.move_relative(acc - degrees, MOVE_SPEED);
+	BackLeft.move_relative(acc + degrees, MOVE_SPEED);
+	BackRight.move_relative(acc - degrees, MOVE_SPEED);
 }
 
+void autonmid(bool isLeft) {
+	moveForward(7);
+	pros::delay(1100);
+	turn(70 * (isLeft ? 1 : -1), 80);
+	pros::delay(700);
+	BackClamp.move(100);
+	pros::delay(100);
+	turn(-70 * (isLeft ? 1 : -1), 80);
+	pros::delay(700);
+	moveForward(-5);
+}
 
 void autonomous() {
 	if(selected) {
@@ -73,14 +90,14 @@ void autonomous() {
 		BackRight.move_relative((1) * BRWeight, 100);
 		pros::delay(2000);
 		*/
-		moveBackward(9.5);
+		moveForward(9.5);
 		//delay of 1.5 seconds
 		pros::delay(1500);
 		// clamp down
 		BackClamp.move(100);
 		//delay of 1 second
 		pros::delay(1000);
-		moveForward(9.0);
+		moveForward(-9.0);
 	}
 }
 
