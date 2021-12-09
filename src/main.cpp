@@ -69,6 +69,7 @@ void turn(float deg, float acc) {
 	BackRight.move_relative(acc - degrees, MOVE_SPEED);
 }
 
+//like the turn function, this is untested, and has a 0% chance of working without adjustment.
 void autonmid(bool isLeft) {
 	moveForward(7);
 	pros::delay(1100);
