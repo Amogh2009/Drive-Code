@@ -55,14 +55,15 @@ void moveForward(float distance) {
 }
 
 //still rough, needs adjustment. Not sure if the theory behind it is entirely correct either.
-void turn(float deg, float acc) {
+void turn(float deg, float dist) {
 	//the dist from one opposite wheel to another. Needs measurement.
 	const float inscribedDiameter = 1;
 
-	float circumference = M_PI * inscribedDiameter;
-	float arc_length = circumference * deg / 360;
-	float rotations = calculateRotations(arc_length);
-	float degrees = 360 * rotations;
+	float circumference = M_PI * inscribedDiameter; //circumference of the circle that describe's the wheels' path
+	float arc_length = circumference * deg / 360; //calculates the length of the arc that represents the angle
+	float rotations = calculateRotations(arc_length); //calculate how many rotations to travel that distance
+	float degrees = 360 * rotations; //calculates the degrees needed to travel that length
+	float acc = calculateRotations(dist) * 360; //calculates the degrees needed to go [dist] far
 	FrontLeft.move_relative(acc + degrees, MOVE_SPEED);
 	FrontRight.move_relative(acc - degrees, MOVE_SPEED);
 	BackLeft.move_relative(acc + degrees, MOVE_SPEED);
