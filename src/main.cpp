@@ -56,7 +56,7 @@ void moveForward(float distance) {
 
 //still rough, needs adjustment. Not sure if the theory behind it is entirely correct either.
 void turn(float deg, float dist) {
-	//the dist from one opposite wheel to another. Needs measurement.
+	//the dist from one opposite wheel to another in feet. Needs measurement.
 	const float inscribedDiameter = 1;
 
 	float circumference = M_PI * inscribedDiameter; //circumference of the circle that describe's the wheels' path
