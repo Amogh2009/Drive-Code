@@ -45,7 +45,7 @@ float calculateRotations(float distance) {
 }
 
 // Move the robot forward distance in feet
-void moveForward(float distance) {
+void move(float distance) {
 	float rotations = calculateRotations(distance);
 	float degrees = 360 * rotations;
 	FrontLeft.move_relative(degrees, MOVE_SPEED);
@@ -72,7 +72,7 @@ void turn(float deg, float dist) {
 
 //like the turn function, this is untested, and has a 0% chance of working without adjustment.
 void autonmid(bool isLeft) {
-	moveForward(7);
+	move(7);
 	pros::delay(1100);
 	turn(70 * (isLeft ? 1 : -1), 80);
 	pros::delay(700);
@@ -80,7 +80,7 @@ void autonmid(bool isLeft) {
 	pros::delay(100);
 	turn(-70 * (isLeft ? 1 : -1), 80);
 	pros::delay(700);
-	moveForward(-5);
+	move(-5);
 }
 
 void autonomous() {
@@ -92,14 +92,14 @@ void autonomous() {
 		BackRight.move_relative((1) * BRWeight, 100);
 		pros::delay(2000);
 		*/
-		moveForward(9.5);
+		move(9.5);
 		//delay of 1.5 seconds
 		pros::delay(1500);
 		// clamp down
 		BackClamp.move(100);
 		//delay of 1 second
 		pros::delay(1000);
-		moveForward(-9.0);
+		move(-9.0);
 	}
 }
 
