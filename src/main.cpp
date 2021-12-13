@@ -111,7 +111,7 @@ void opcontrol() {
 		//drivetrain
 		double power = master.get_analog(ANALOG_LEFT_Y);
 		double turn = master.get_analog(ANALOG_RIGHT_X);
-		driverControl(100*(power-turn), 100*(power+turn));
+    driverControl(100*(power-turn), 100*(power+turn));
 		//back clamp
 		if (master.get_digital(DIGITAL_R2)){
 			BackClamp.move(100);
