@@ -92,14 +92,14 @@ void autonomous() {
 		BackRight.move_relative((1) * BRWeight, 100);
 		pros::delay(2000);
 		*/
-		move(9.5);
+		move(12.5);
 		//delay of 1.5 seconds
 		pros::delay(1500);
 		// clamp down
 		BackClamp.move(100);
 		//delay of 1 second
 		pros::delay(1000);
-		move(-9.0);
+		move(-12.0);
 	}
 }
 
@@ -110,7 +110,7 @@ void opcontrol() {
   while (true) {
 		//drivetrain
 		double power = master.get_analog(ANALOG_LEFT_Y);
-		double turn = master.get_analog(ANALOG_RIGHT_X);
+		double turn = master.get_analog(ANALOG_LEFT_X);
     driverControl(100*(power-turn), 100*(power+turn));
 		//back clamp
 		if (master.get_digital(DIGITAL_R2)){
