@@ -15,6 +15,7 @@ void rightBtn(){
 
 }
 
+//is this even accurate?
 void turnLeft45Degrees(){
     FrontLeft.move(100);
     FrontRight.move(200);
@@ -109,7 +110,11 @@ void opcontrol() {
 
   while (true) {
 		//drivetrain
-		double power = master.get_analog(ANALOG_LEFT_Y);
+    /*
+    int power = master.get_analog(ANALOG_LEFT_Y);
+    int turn = master.get_analog(ANALOG_RIGHT_X);
+    */
+    double power = master.get_analog(ANALOG_LEFT_Y);
 		double turn = master.get_analog(ANALOG_LEFT_X);
     driverControl(100*(power-turn), 100*(power+turn));
 		//back clamp
