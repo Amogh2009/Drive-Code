@@ -19,12 +19,14 @@ extern Motor RightIntake;
 //Ports
 const int FLPort = 3;
 const int FRPort = 6;
-const int BLPort = 4;
-const int BRPort = 5;
+const int BLPort = 7;
+const int BRPort = 8;
+const int MRPort = 9;
+const int MLPort = 10;
 
 const int BCPort = 7;
-const int FCPort = 8;
-const int L1Port = 9;
+const int FCPort = 12;
+const int L1Port = 11;
 const int L2Port = 10;
 
 const int LIPort = 11;
@@ -38,6 +40,8 @@ Motor FrontLeft(FLPort, true);
 Motor FrontRight(FRPort, false);
 Motor BackLeft(BLPort, true);
 Motor BackRight(BRPort, false);
+Motor MidLeft(MLPort, true);
+Motor MidRight(MRPort, false);
 Motor LeftIntake(LIPort, false);
 Motor RightIntake(RIPort, true);
 Motor BackRoller(LRPort, true);
