@@ -51,6 +51,8 @@ void move(float distance) {
 	float degrees = 360 * rotations;
 	FrontLeft.move_relative(degrees, MOVE_SPEED);
 	FrontRight.move_relative(degrees, MOVE_SPEED);
+  MidLeft.move_relative(degrees, MOVE_SPEED);
+  MidRight.move_relative(degrees, MOVE_SPEED);
 	BackLeft.move_relative(degrees, MOVE_SPEED);
 	BackRight.move_relative(degrees, MOVE_SPEED);
 }
