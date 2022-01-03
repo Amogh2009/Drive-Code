@@ -59,6 +59,8 @@ void driverControl(double l, double r){
 	FrontRight.move_velocity(r * FRWeight);
 	BackLeft.move_velocity(l * BLWeight);
 	BackRight.move_velocity(r * BRWeight);
+  MidLeft.move_velocity(1 * MLWeight);
+  MidRight.move_velocity(1 * MRWeight);
 }
 
 
