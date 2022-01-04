@@ -11,6 +11,8 @@ const double FLWeight = 1;
 const double FRWeight = 1;
 const double BLWeight = 1;
 const double BRWeight = 1;
+const double MLWeight = 1;
+const double MRWeight = 1;
 
 //For debugging things
 void printOnScreen(){
