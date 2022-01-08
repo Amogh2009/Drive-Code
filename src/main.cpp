@@ -30,7 +30,8 @@ void initialize() {
 	pros::lcd::register_btn1_cb(centerBtn);
 	pros::lcd::register_btn2_cb(rightBtn);
 
-	autonSelector();
+  autonSelector();
+	//autonSelector();
 }
 
 void disabled() {}
@@ -117,8 +118,8 @@ void opcontrol() {
     int turn = master.get_analog(ANALOG_RIGHT_X);
     */
     double power = master.get_analog(ANALOG_LEFT_Y);
-		double turn = master.get_analog(ANALOG_LEFT_X);
-    driverControl(100*(power-turn), 100*(power+turn));
+		double turn = master.get_analog(ANALOG_RIGHT_X);
+    driverControl(200*(power-turn), 200*(power+turn));
 		//back clamp
 		if (master.get_digital(DIGITAL_R2)){
 			BackClamp.move(100);

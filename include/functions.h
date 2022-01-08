@@ -52,7 +52,24 @@ void autonSelector(){
    control.rumble("..");
 }
 
+void motorTest() {
+  while (true) {
+  Controller master (CONTROLLER_MASTER);
 
+  if (master.get_digital(DIGITAL_L1)) {
+    FrontLeft.move(100);
+  }
+  if (master.get_digital(DIGITAL_L2)) {
+    BackLeft.move(100);
+  }
+  if (master.get_digital(DIGITAL_R1)) {
+    FrontRight.move(100);
+  }
+  if (master.get_digital(DIGITAL_R2)) {
+    BackRight.move(100);
+    }
+  }
+}
 
 void driverControl(double l, double r){
   //Calculates speed of wheels for driver control
