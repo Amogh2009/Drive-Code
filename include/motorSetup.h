@@ -19,7 +19,7 @@ extern Motor RightIntake;
 //Ports
 const int FLPort = 3;
 const int FRPort = 6;
-const int BLPort = 7;
+const int BLPort = 14;
 const int BRPort = 8;
 const int MRPort = 9;
 const int MLPort = 10;
