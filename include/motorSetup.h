@@ -41,14 +41,15 @@ Motor FrontRight(FRPort, false);
 Motor BackLeft(BLPort, true);
 Motor BackRight(BRPort, false);
 Motor MidLeft(MLPort, true);
+Motor MidRight(MRPort, false);
 /*
 Motor FrontLeft(FLPort, false);
 Motor FrontRight(FRPort, true);
 Motor BackLeft(BLPort, false);
 Motor BackRight(BRPort, true);
 Motor MidLeft(MLPort, false);
+Motor MidRight (MRPort, true);
 */
-Motor MidRight(MRPort, false);
 Motor LeftIntake(LIPort, false);
 Motor RightIntake(RIPort, true);
 Motor BackRoller(LRPort, true);
