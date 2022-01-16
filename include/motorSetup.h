@@ -22,7 +22,7 @@ const int FRPort = 5;
 const int BLPort = 14;
 const int BRPort = 16;
 const int MLPort = 10;
-const int MRPort = 17;
+const int MRPort = 19;
 
 const int BCPort = 7;
 const int FCPort = 12;
