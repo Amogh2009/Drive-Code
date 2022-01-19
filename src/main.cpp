@@ -38,7 +38,7 @@ void disabled() {}
 
 void competition_initialize() {}
 
-const int MOVE_SPEED = 120;  // 120 RPM
+const int MOVE_SPEED = 200;  // 200 RPM
 const float WHEEL_RADIUS = 2.0;  // 2 inches
 
 float calculateRotations(float distance) {
@@ -75,7 +75,7 @@ void turn(float deg, float dist) {
 }
 
 //like the turn function, this is untested, and has a 0% chance of working without adjustment.
-void autonmid(bool isLeft) {
+/*void autonmid(bool isLeft) {
 	move(7);
 	pros::delay(1100);
 	turn(70 * (isLeft ? 1 : -1), 80);
@@ -85,7 +85,7 @@ void autonmid(bool isLeft) {
 	turn(-70 * (isLeft ? 1 : -1), 80);
 	pros::delay(700);
 	move(-5);
-}
+}*/
 
 void autonomous() {
 	if(selected) {
@@ -96,14 +96,14 @@ void autonomous() {
 		BackRight.move_relative((1) * BRWeight, 100);
 		pros::delay(2000);
 		*/
-		move(12.5);
+		move(7.5);
 		//delay of 1.5 seconds
 		pros::delay(1500);
 		// clamp down
-		BackClamp.move(100);
+		FrontClamp.move(-50);
 		//delay of 1 second
 		pros::delay(1000);
-		move(-12.0);
+		move(-7);
 	}
 }
 
