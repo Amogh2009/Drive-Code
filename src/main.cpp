@@ -96,14 +96,15 @@ void autonomous() {
 		BackRight.move_relative((1) * BRWeight, 100);
 		pros::delay(2000);
 		*/
-		move(7.5);
+    //Lift1.move(-15);
+    move(7);
 		//delay of 1.5 seconds
 		pros::delay(1500);
 		// clamp down
 		FrontClamp.move(50);
 		//delay of 1 second
 		pros::delay(1000);
-		move(-7);
+		move(-6.5);
 	}
 }
 
