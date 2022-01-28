@@ -97,7 +97,7 @@ void autonomous() {
 		pros::delay(2000);
 		*/
     Lift1.move(-200);
-    pros::delay(50);
+    pros::delay(25);
     move(7.5);
     Lift1.move(0);
 		//delay of 1.5 seconds
@@ -106,7 +106,8 @@ void autonomous() {
 		FrontClamp.move(50);
 		//delay of 1 second
 		pros::delay(1000);
-		move(-7);
+		move(-7.5);
+
 	}
 }
 
@@ -133,19 +134,19 @@ void opcontrol() {
 			BackClamp.move(0);
 		}
 		//front clamp
-		if (master.get_digital(DIGITAL_L2)){
+		if (master.get_digital(DIGITAL_R2)){
 			FrontClamp.move(100);
 		}
-		else if (master.get_digital(DIGITAL_L1)){
+		else if (master.get_digital(DIGITAL_R1)){
 			FrontClamp.move(-100);
 		} else {
 			FrontClamp.move(0);
 		}
-		if (master.get_digital(DIGITAL_R2)){
+		if (master.get_digital(DIGITAL_L2)){
 			Lift1.move(200);
 			Lift2.move(200);
 		}
-		else if (master.get_digital(DIGITAL_R1)){
+		else if (master.get_digital(DIGITAL_L1)){
 			Lift1.move(-200);
 			Lift2.move(-200);
 		} else {
