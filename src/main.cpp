@@ -144,14 +144,11 @@ void opcontrol() {
 		}
 		if (master.get_digital(DIGITAL_L2)){
 			Lift1.move(200);
-			Lift2.move(200);
 		}
 		else if (master.get_digital(DIGITAL_L1)){
 			Lift1.move(-200);
-			Lift2.move(-200);
 		} else {
 			Lift1.move(0);
-			Lift2.move(0);
 		}
 		//ring intake
 		/*

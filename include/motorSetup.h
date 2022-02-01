@@ -27,7 +27,6 @@ const int MRPort = 7;
 const int BCPort = 7;
 const int FCPort = 12;
 const int L1Port = 15;
-const int L2Port = 9;
 
 const int LIPort = 11;
 const int RIPort = 12;
@@ -37,11 +36,11 @@ const int IMUPort = 1;
 
 Controller control (E_CONTROLLER_MASTER);
 Motor FrontLeft(FLPort, true);
-Motor FrontRight(FRPort, false);
+Motor FrontRight(FRPort, true);
 Motor BackLeft(BLPort, true);
 Motor BackRight(BRPort, false);
-Motor MidLeft(MLPort, true);
-Motor MidRight(MRPort, false);
+Motor MidLeft(MLPort, false);
+Motor MidRight(MRPort, true);
 /*
 Motor FrontLeft(FLPort, false);
 Motor FrontRight(FRPort, true);
@@ -58,7 +57,6 @@ Motor BackClamp(BCPort,true);
 Motor FrontClamp(FCPort,false);
 Motor Conveyor(LIPort,true);
 Motor Lift1(L1Port, true);
-Motor Lift2(L2Port, false);
 Imu inertial(IMUPort);
 
 ADIEncoder yWheel('C', 'D', true);
