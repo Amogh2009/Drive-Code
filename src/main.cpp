@@ -98,7 +98,7 @@ void autonomous() {
 		*/
     Lift1.move(-200);
     pros::delay(25);
-    move(7);
+    move(6.5);
     Lift1.move(0);
 		//delay of 1.5 seconds
 		pros::delay(1500);
@@ -106,7 +106,7 @@ void autonomous() {
 		FrontClamp.move(50);
 		//delay of 1 second
 		pros::delay(1000);
-		move(-6.5);
+		move(-6);
 	}
 }
 
