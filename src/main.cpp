@@ -98,7 +98,7 @@ void autonomous() {
 		*/
     Lift1.move(-200);
     pros::delay(25);
-    move(7.5);
+    move(7);
     Lift1.move(0);
 		//delay of 1.5 seconds
 		pros::delay(1500);
@@ -106,14 +106,21 @@ void autonomous() {
 		FrontClamp.move(50);
 		//delay of 1 second
 		pros::delay(1000);
-		move(-7);
+		move(-6.5);
 	}
 }
 
 void my_task_fn(void* param) {
-	std::string t =std::to_string( (FrontLeft.get_temperature()+FrontRight.get_temperature() + BackLeft.get_temperature()+ BackRight.get_temperature()+MidLeft.get_temperature()+MidRight.get_temperature()+FrontClamp.get_temperature()+Lift1.get_temperature())/8);
-	control.print(1, 1,t.c_str());
-	delay(200);
+	double temp = (FrontLeft.get_temperature());
+								/*+ FrontRight.get_temperature()
+								+ BackLeft.get_temperature()
+								+ BackRight.get_temperature()
+								+ MidLeft.get_temperature()
+								+ MidRight.get_temperature()
+								+ FrontClamp.get_temperature()
+								+ Lift1.get_temperature()) / 8.0;*/
+	control.print(1, 1, "%f", temp);
+	delay(10000);
 }
 
 using namespace pros;
@@ -122,7 +129,7 @@ void opcontrol() {
 
   while (true) {
 		//drivetrain
-    Task my_task(my_task_fn);
+    //Task my_task(my_task_fn);
     double power = master.get_analog(ANALOG_LEFT_Y);
 		double turn = master.get_analog(ANALOG_RIGHT_X);
     driverControl(200*(power+turn), 200*(power-turn));
