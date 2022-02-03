@@ -123,6 +123,9 @@ void print_temperature(void* param) {
 	control.print(1, 1, "%.2f", temp);
 }
 
+double lastpress;
+double multiplier = 6;
+
 using namespace pros;
 void opcontrol() {
   Controller master (CONTROLLER_MASTER);
@@ -133,6 +136,30 @@ void opcontrol() {
     double power = master.get_analog(ANALOG_LEFT_Y);
 		double turn = master.get_analog(ANALOG_RIGHT_X);
     driverControl(200*(power+turn), 200*(power-turn));
+
+    if(control.get_digital(E_CONTROLLER_DIGITAL_X) && millis()-lastpress>=1000){
+        if (multiplier == 6){
+          multiplier = 1.5;
+          FrontLeft.set_brake_mode(MOTOR_BRAKE_HOLD);
+          FrontRight.set_brake_mode(MOTOR_BRAKE_HOLD);
+          BackRight.set_brake_mode(MOTOR_BRAKE_HOLD);
+          BackLeft.set_brake_mode(MOTOR_BRAKE_HOLD);
+          MidRight.set_brake_mode(MOTOR_BRAKE_HOLD);
+          MidLeft.set_brake_mode(MOTOR_BRAKE_HOLD);
+          std::string climbstring = "Climb";
+          lastpress = millis();
+        }else{
+          multiplier = 6;
+          FrontLeft.set_brake_mode(MOTOR_BRAKE_COAST);
+          FrontRight.set_brake_mode(MOTOR_BRAKE_COAST);
+          BackLeft.set_brake_mode(MOTOR_BRAKE_COAST);
+          BackRight.set_brake_mode(MOTOR_BRAKE_COAST);
+          MidLeft.set_brake_mode(MOTOR_BRAKE_COAST);
+          MidRight.set_brake_mode(MOTOR_BRAKE_COAST);
+          std::string climbstring = "No Climb";
+          lastpress = millis();
+        }
+    }
     /*
     //back clamp
 		if (master.get_digital(DIGITAL_R2)){
