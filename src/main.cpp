@@ -110,26 +110,26 @@ void autonomous() {
 	}
 }
 
-void my_task_fn(void* param) {
-	double temp = (FrontLeft.get_temperature());
-								/*+ FrontRight.get_temperature()
-								+ BackLeft.get_temperature()
-								+ BackRight.get_temperature()
-								+ MidLeft.get_temperature()
-								+ MidRight.get_temperature()
-								+ FrontClamp.get_temperature()
-								+ Lift1.get_temperature()) / 8.0;*/
-	control.print(1, 1, "%f", temp);
-	delay(10000);
+void print_temperature(void* param) {
+	double temp = (FrontRight.get_temperature()
+	+ BackLeft.get_temperature()
+	+ BackRight.get_temperature()
+	+ MidLeft.get_temperature()
+	+ MidRight.get_temperature()
+	+ FrontClamp.get_temperature()
+	+ Lift1.get_temperature()) / 7.0;
+	// (FrontLeft.get_temperature());
+
+	control.print(1, 1, "%.2f", temp);
 }
 
 using namespace pros;
 void opcontrol() {
   Controller master (CONTROLLER_MASTER);
-
+	//Task my_task(my_task_fn);
   while (true) {
 		//drivetrain
-    //Task my_task(my_task_fn);
+		print_temperature(nullptr);
     double power = master.get_analog(ANALOG_LEFT_Y);
 		double turn = master.get_analog(ANALOG_RIGHT_X);
     driverControl(200*(power+turn), 200*(power-turn));
