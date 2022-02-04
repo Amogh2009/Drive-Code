@@ -135,7 +135,7 @@ void opcontrol() {
 		print_temperature(nullptr);
     double power = master.get_analog(ANALOG_LEFT_Y);
 		double turn = master.get_analog(ANALOG_RIGHT_X);
-    driverControl(200*(power+turn), 200*(power-turn));
+    driverControl(multiplier*200*(power+turn), multiplier*200*(power-turn));
 
     if(control.get_digital(E_CONTROLLER_DIGITAL_X) && millis()-lastpress>=1000){
         if (multiplier == 6){
@@ -146,7 +146,8 @@ void opcontrol() {
           BackLeft.set_brake_mode(MOTOR_BRAKE_HOLD);
           MidRight.set_brake_mode(MOTOR_BRAKE_HOLD);
           MidLeft.set_brake_mode(MOTOR_BRAKE_HOLD);
-          std::string climbstring = "Climb";
+          //std::string climbstring = "Climb";
+          control.print(3, 1, "Climb");
           lastpress = millis();
         }else{
           multiplier = 6;
@@ -156,7 +157,8 @@ void opcontrol() {
           BackRight.set_brake_mode(MOTOR_BRAKE_COAST);
           MidLeft.set_brake_mode(MOTOR_BRAKE_COAST);
           MidRight.set_brake_mode(MOTOR_BRAKE_COAST);
-          std::string climbstring = "No Climb";
+          //std::string climbstring = "No Climb";
+          control.print(3, 1, "No Climb");
           lastpress = millis();
         }
     }
