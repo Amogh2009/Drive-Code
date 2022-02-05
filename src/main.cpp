@@ -114,9 +114,9 @@ void autonomous() {
     Lift1.move(-200);
     pros::delay(100);
     Lift1.move(0);
-    move(-1.25);
+    move(-4);
     turnLeft90Degrees();
-    move(10);
+    move(14.5);
   }
 }
 
