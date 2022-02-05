@@ -24,8 +24,8 @@ void printOnScreen(){
 }
 
 int selected = 0;
-std::string autons[2] = {"Disabled", "Enabled"};
-int size = 2;//*(&autons + 1) - autons;
+std::string autons[3] = {"Disabled", "Enabled", "Skills"};
+int size = 3;//*(&autons + 1) - autons;
 
 
 void autonSelector(){

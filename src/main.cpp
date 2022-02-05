@@ -16,11 +16,12 @@ void rightBtn(){
 }
 
 //is this even accurate?
-void turnLeft45Degrees(){
-    FrontLeft.move(100);
+void turnLeft90Degrees(){
+    FrontLeft.move(-200);
     FrontRight.move(200);
-    BackLeft.move(100);
+    BackLeft.move(-200);
     BackRight.move(200);
+    pros::delay(3000);
 }
 
 void initialize() {
@@ -88,7 +89,7 @@ void turn(float deg, float dist) {
 }*/
 
 void autonomous() {
-	if(selected) {
+	if(selected == 1) {
 		/*
 		FrontLeft.move_relative((1) * FLWeight, 100);
 		FrontRight.move_relative((1) * FRWeight, 100);
@@ -107,7 +108,16 @@ void autonomous() {
 		//delay of 1 second
 		pros::delay(1000);
 		move(-6);
-	}
+	}else if(selected == 2){
+    FrontClamp.move(50);
+    pros::delay(1000);
+    Lift1.move(-200);
+    pros::delay(100);
+    Lift1.move(0);
+    move(-1.25);
+    turnLeft90Degrees();
+    move(10);
+  }
 }
 
 void print_temperature(void* param) {
