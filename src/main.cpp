@@ -49,14 +49,15 @@ float calculateRotations(float distance) {
 
 // Move the robot forward distance in feet
 void move(float distance) {
+  float multiplier = 0.75;
 	float rotations = calculateRotations(distance);
 	float degrees = 360 * rotations;
-	FrontLeft.move_relative(degrees, MOVE_SPEED);
-	FrontRight.move_relative(degrees, MOVE_SPEED);
-  MidLeft.move_relative(degrees, MOVE_SPEED);
-  MidRight.move_relative(degrees, MOVE_SPEED);
-	BackLeft.move_relative(degrees, MOVE_SPEED);
-	BackRight.move_relative(degrees, MOVE_SPEED);
+	FrontLeft.move_relative(degrees, multiplier*MOVE_SPEED);
+	FrontRight.move_relative(degrees, multiplier*MOVE_SPEED);
+  MidLeft.move_relative(degrees, multiplier*MOVE_SPEED);
+  MidRight.move_relative(degrees, multiplier*MOVE_SPEED);
+	BackLeft.move_relative(degrees, multiplier*MOVE_SPEED);
+	BackRight.move_relative(degrees, multiplier*MOVE_SPEED);
 }
 
 //still rough, needs adjustment. Not sure if the theory behind it is entirely correct either.
@@ -98,8 +99,8 @@ void autonomous() {
 		pros::delay(2000);
 		*/
     Lift1.move(-200);
-    pros::delay(25);
-    move(6.5);
+    pros::delay(10);
+    move(6.8);
     Lift1.move(0);
 		//delay of 1.5 seconds
 		pros::delay(1500);
@@ -107,7 +108,7 @@ void autonomous() {
 		FrontClamp.move(50);
 		//delay of 1 second
 		pros::delay(1000);
-		move(-6);
+		move(-6.3);
 	}else if(selected == 2){
     FrontClamp.move(50);
     pros::delay(1000);
